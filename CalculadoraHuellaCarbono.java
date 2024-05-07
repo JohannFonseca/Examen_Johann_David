@@ -70,10 +70,10 @@ public class CalculadoraHuellaCarbono {
 
         // Agregar el panel principal a la ventana
         ventanaCalculadora.add(panelPrincipal);
-        
+
         // Centrar la ventana en la pantalla
         ventanaCalculadora.setLocationRelativeTo(null);
-        
+
         // Mostrar la ventana de la calculadora
         ventanaCalculadora.setVisible(true);
     }
