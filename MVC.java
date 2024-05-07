@@ -1,10 +1,4 @@
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class MVC extends JFrame implements ActionListener {
+public class MVC {
     private JTextField txtConsumoEnergia;
     private JTextField txtKilometrosCoche;
     private JTextField txtKilometrosBus;
