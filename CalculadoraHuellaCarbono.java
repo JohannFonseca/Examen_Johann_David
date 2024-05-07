@@ -46,12 +46,21 @@ public class CalculadoraHuellaCarbono {
         // Crear un botón para calcular
         JButton btnCalcular = new JButton("Calcular");
         btnCalcular.addActionListener(e -> {
-            // Aquí iría la lógica para calcular la huella de carbono
-            // Por simplicidad, aquí solo cerraremos la ventana de la calculadora
-            ventanaCalculadora.dispose();
-            // Luego puedes abrir la siguiente ventana o realizar otras acciones según tu lógica
+            // Obtener respuestas del usuario
+            int respuesta1 = Integer.parseInt(txtRespuesta1.getText());
+            int respuesta2 = Integer.parseInt(txtRespuesta2.getText());
+            int respuesta3 = Integer.parseInt(txtRespuesta3.getText());
+            int respuesta4 = Integer.parseInt(txtRespuesta4.getText());
+
+            // Calcular huella de carbono (aquí solo un ejemplo)
+            double huellaCarbono = calcularHuellaCarbono(respuesta1, respuesta2, respuesta3, respuesta4);
+
+            // Abrir la tercera ventana
             VentanaLimpia ventanaLimpia = new VentanaLimpia();
             ventanaLimpia.mostrarVentana();
+
+            // Cerrar la ventana actual
+            ventanaCalculadora.dispose();
         });
 
         // Agregar componentes al panel principal
@@ -67,5 +76,12 @@ public class CalculadoraHuellaCarbono {
         
         // Mostrar la ventana de la calculadora
         ventanaCalculadora.setVisible(true);
+    }
+
+    private double calcularHuellaCarbono(int respuesta1, int respuesta2, int respuesta3, int respuesta4) {
+        // Aquí va la lógica para calcular la huella de carbono basada en las respuestas del usuario
+        // Este es solo un ejemplo, debes implementar la lógica adecuada
+        double huellaCarbono = (respuesta1 * 0.5) + (respuesta2 * 0.1) + (respuesta3 * 0.05) + (respuesta4 * 0.5);
+        return huellaCarbono;
     }
 }
