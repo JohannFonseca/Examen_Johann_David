@@ -63,10 +63,20 @@ public class CalculadoraHuellaCarbono {
             ventanaCalculadora.dispose();
         });
 
+        // Botón de regreso
+        JButton btnRegresar = new JButton("Regresar");
+        btnRegresar.addActionListener(e -> {
+            // Abrir la ventana de bienvenida
+            Bienvenida bienvenida = new Bienvenida();
+            bienvenida.main(null); // Llama al método main de la clase Bienvenida
+            ventanaCalculadora.dispose(); // Cerrar la ventana actual
+        });
+
         // Agregar componentes al panel principal
         JPanel panelPrincipal = new JPanel();
         panelPrincipal.add(panelPreguntas);
         panelPrincipal.add(btnCalcular);
+        panelPrincipal.add(btnRegresar); // Agregar botón de regreso
 
         // Agregar el panel principal a la ventana
         ventanaCalculadora.add(panelPrincipal);
@@ -84,4 +94,10 @@ public class CalculadoraHuellaCarbono {
         double huellaCarbono = (respuesta1 * 0.5) + (respuesta2 * 0.1) + (respuesta3 * 0.05) + (respuesta4 * 0.5);
         return huellaCarbono;
     }
+
+    public static void main(String[] args) {
+        CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
+        calculadora.mostrarVentana();
+    }
 }
+
