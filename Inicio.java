@@ -8,7 +8,7 @@ public class Inicio {
     private JTextField txtProcedencia;
 
     // Constructor
-    public Inicio() {
+    public void mostrarVentana() {
         // Crear la ventana de inicio
         ventanaInicio = new JFrame("Inicio");
         ventanaInicio.setSize(450, 450);
