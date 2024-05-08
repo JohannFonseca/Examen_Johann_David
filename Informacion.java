@@ -4,14 +4,14 @@ import java.awt.event.*;
 
 public class Informacion {
     public void mostrarVentana() {
-        // Crear la ventana de información
+        
         JFrame ventanaInformacion = new JFrame("Información");
         ventanaInformacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear un panel con un color de fondo blanco
+        
         JPanel panelFondo = new JPanel();
         panelFondo.setBackground(Color.WHITE);
-        panelFondo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Agrega un borde interno
+        panelFondo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // agrega un borde interno
 
         // Texto sobre la huella de carbono
         String textoHuellaCarbono = "<html><body>"
@@ -25,9 +25,9 @@ public class Informacion {
                                     + "<p>Pequeñas acciones individuales, como caminar o andar en bicicleta en lugar de conducir, reducir el consumo de carne y productos lácteos, y reciclar y reutilizar materiales, pueden marcar una gran diferencia cuando se trata de reducir nuestra huella de carbono y crear un futuro más sostenible para todos.</p>"
                                     + "</body></html>";
 
-        // Crear un JLabel para mostrar el texto
+        
         JLabel labelInformacion = new JLabel(textoHuellaCarbono);
-        labelInformacion.setFont(new Font("Arial", Font.PLAIN, 16)); // Cambia la fuente y el tamaño según tus preferencias
+        labelInformacion.setFont(new Font("Arial", Font.PLAIN, 16)); // para cambiar la fuente y el tamaño según tus preferencias
 
         // Crear un botón de regresar
         JButton btnRegresar = new JButton("Regresar");
@@ -56,8 +56,10 @@ public class Informacion {
         // Agregar el panel a la ventana
         ventanaInformacion.getContentPane().add(panelFondo, BorderLayout.CENTER);
 
+        // Ajustar el tamaño de la ventana para que se adapte al contenido
+        ventanaInformacion.setSize(600, 800); // Menos ancho y más largo
+
         // Centrar la ventana en la pantalla
-        ventanaInformacion.pack();
         ventanaInformacion.setLocationRelativeTo(null);
 
         ventanaInformacion.setVisible(true);
