@@ -8,6 +8,9 @@ public class Bienvenida {
         ventanaBienvenida.setSize(800, 400);
         ventanaBienvenida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Obtener el tamaño de la pantalla
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
         // Crear un panel con un color de fondo verde claro
         JPanel panelFondo = new JPanel();
         panelFondo.setBackground(new Color(204, 255, 204)); // Verde clarito
@@ -24,12 +27,7 @@ public class Bienvenida {
 
         // Crear un botón para iniciar el cálculo
         JButton btnIniciar = new JButton("Iniciar Cálculo");
-        btnIniciar.addActionListener(e -> {
-            // Abrir la ventana de la calculadora
-            CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
-            calculadora.mostrarVentana();
-            ventanaBienvenida.dispose(); // Cerrar la ventana de bienvenida
-        });
+        btnIniciar.setPreferredSize(new Dimension(300, 50)); // Doble del tamaño original
 
         // Configurar el diseño del panelFondo
         GroupLayout layout = new GroupLayout(panelFondo);
@@ -44,15 +42,20 @@ public class Bienvenida {
                 .addComponent(btnIniciar)
         );
         layout.setVerticalGroup(layout.createSequentialGroup()
+                .addGap(screenSize.height / 4) // Centrar verticalmente
                 .addComponent(labelBienvenida1)
                 .addComponent(labelBienvenida2)
-                .addGap(50)
+                .addGap(screenSize.height / 4) // Espacio adicional
                 .addComponent(btnIniciar)
         );
 
         // Agregar el panel a la ventana
         ventanaBienvenida.add(panelFondo);
 
+        // Centrar la ventana en la pantalla
+        ventanaBienvenida.setLocationRelativeTo(null);
+
         ventanaBienvenida.setVisible(true);
     }
 }
+
