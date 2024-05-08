@@ -1,17 +1,17 @@
+// Informacion.java
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class Informacion {
     public void mostrarVentana() {
-        
+        // Crear la ventana de información
         JFrame ventanaInformacion = new JFrame("Información");
         ventanaInformacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        
+        // Panel con un borde y fondo blanco
         JPanel panelFondo = new JPanel();
         panelFondo.setBackground(Color.WHITE);
-        panelFondo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // agrega un borde interno
+        panelFondo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Agrega un borde interno
 
         // Texto sobre la huella de carbono
         String textoHuellaCarbono = "<html><body>"
@@ -29,13 +29,13 @@ public class Informacion {
                                     + "<p>y reutilizar materiales, pueden marcar una gran diferencia cuando se trata de reducir nuestra huella de carbono y crear un futuro más sostenible para todos.</p>"
                                     + "</body></html>";
 
-        
+        // Etiqueta con el texto sobre la huella de carbono
         JLabel labelInformacion = new JLabel(textoHuellaCarbono);
-        labelInformacion.setFont(new Font("Arial", Font.PLAIN, 16)); 
-        labelInformacion.setHorizontalAlignment(SwingConstants.LEFT);
-        labelInformacion.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20)); 
+        labelInformacion.setFont(new Font("Arial", Font.PLAIN, 16)); // Fuente y tamaño de texto
+        labelInformacion.setHorizontalAlignment(SwingConstants.LEFT); // Alineación a la izquierda
+        labelInformacion.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20)); // Agrega un borde a la derecha
 
-        // Crear un botón de regresar
+        // Botón de regresar
         JButton btnRegresar = new JButton("Regresar");
         btnRegresar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -45,29 +45,28 @@ public class Informacion {
             }
         });
 
-        
+        // Panel para el botón de regresar
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panelBoton.add(btnRegresar);
 
-        
+        // Panel para el contenido
         JPanel panelContenido = new JPanel();
         panelContenido.setLayout(new BoxLayout(panelContenido, BoxLayout.Y_AXIS));
         panelContenido.add(labelInformacion);
-        panelContenido.add(Box.createVerticalGlue()); 
+        panelContenido.add(Box.createVerticalGlue()); // Espacio vertical
         panelContenido.add(panelBoton);
 
-        
+        // Agregar el contenido al panel de fondo
         panelFondo.add(panelContenido);
 
-        
+        // Agregar el panel de fondo a la ventana
         ventanaInformacion.getContentPane().add(panelFondo, BorderLayout.CENTER);
 
-        
-        ventanaInformacion.setSize(1000, 440); 
-
-        
+        // Configurar tamaño y posición de la ventana
+        ventanaInformacion.setSize(1000, 440);
         ventanaInformacion.setLocationRelativeTo(null);
 
+        // Mostrar la ventana
         ventanaInformacion.setVisible(true);
     }
 
@@ -76,7 +75,6 @@ public class Informacion {
         info.mostrarVentana();
     }
 }
-
 
 
 
