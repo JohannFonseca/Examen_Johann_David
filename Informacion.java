@@ -14,8 +14,8 @@ public class Informacion {
         panelFondo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // agrega un borde interno
 
         // Texto sobre la huella de carbono
-        String textoHuellaCarbono = "<html><body>"
-                                    + "<h1>¿Qué es la huella de carbono?</h1>"
+        String textoHuellaCarbono =
+                                    "<h1>¿Qué es la huella de carbono?</h1>"
                                     + "La huella de carbono es una medida de la cantidad total de gases de efecto invernadero (GEI) emitidos a"
                                     +"la atmósfera debido a las actividades humanas, expresada en términos de dióxido de carbono equivalente (CO2e)."
                                     + "<p>Estas emisiones provienen principalmente de la quema de combustibles fósiles como el petróleo, el gas natural<p>"
