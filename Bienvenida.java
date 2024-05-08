@@ -47,6 +47,9 @@ public class Bienvenida {
 
         // Agregar el panel a la ventana
         ventanaBienvenida.getContentPane().add(panelFondo, BorderLayout.CENTER);
+        
+        // Agregar el botón a la ventana
+        ventanaBienvenida.getContentPane().add(btnIniciar, BorderLayout.SOUTH);
 
         // Centrar la ventana en la pantalla
         ventanaBienvenida.pack();
