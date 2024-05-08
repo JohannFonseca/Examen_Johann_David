@@ -16,8 +16,8 @@ public class Informacion {
         // Texto sobre la huella de carbono
         String textoHuellaCarbono = "<html><body>"
                                     + "<h1>¿Qué es la huella de carbono?</h1>"
-                                    + "<p>La huella de carbono es una medida de la cantidad total de gases de efecto invernadero (GEI) emitidos a </p>"
-                                    +"<p>la atmósfera debido a las actividades humanas, expresada en términos de dióxido de carbono equivalente (CO2e).<p>"
+                                    + "La huella de carbono es una medida de la cantidad total de gases de efecto invernadero (GEI) emitidos a"
+                                    +"la atmósfera debido a las actividades humanas, expresada en términos de dióxido de carbono equivalente (CO2e)."
                                     + "<p>Estas emisiones provienen principalmente de la quema de combustibles fósiles como el petróleo, el gas natural<p>"
                                     +"<p> y el carbón para generar energía, así como de actividades como la producción industrial, la agricultura y el transporte.</p>"
                                     + "<h1>¿Por qué es importante reducir nuestra huella de carbono?</h1>"
