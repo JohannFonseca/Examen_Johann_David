@@ -5,49 +5,51 @@ import java.util.HashMap;
 public class Inicio {
     private JFrame ventanaInicio;
 
+    // Método para mostrar la ventana de inicio
     public void mostrarVentana() {
         // Crear la ventana de inicio
         ventanaInicio = new JFrame("Inicio");
         ventanaInicio.setSize(400, 300);
         ventanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Panel principal con un diseño de cuadrícula
+        // Crear el panel principal con un diseño de cuadrícula
         JPanel panelPrincipal = new JPanel(new GridBagLayout());
+        panelPrincipal.setBackground(new Color(240, 240, 240)); // Color de fondo
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(5, 10, 5, 10);
+        gbc.insets = new Insets(10, 10, 10, 10);
 
-        // Componentes para ingresar datos
+        // Etiqueta y campo de texto para el nombre
         JLabel labelNombre = new JLabel("Nombre:");
         JTextField txtNombre = new JTextField(20);
         panelPrincipal.add(labelNombre, gbc);
         gbc.gridy++;
         panelPrincipal.add(txtNombre, gbc);
 
+        // Etiqueta y campo de texto para la cédula
         JLabel labelCedula = new JLabel("Cédula:");
         JTextField txtCedula = new JTextField(20);
         panelPrincipal.add(labelCedula, gbc);
         gbc.gridy++;
         panelPrincipal.add(txtCedula, gbc);
 
+        // Etiqueta y campo de texto para el lugar de procedencia
         JLabel labelProcedencia = new JLabel("Lugar de Procedencia:");
         JTextField txtProcedencia = new JTextField(20);
         panelPrincipal.add(labelProcedencia, gbc);
         gbc.gridy++;
         panelPrincipal.add(txtProcedencia, gbc);
 
-        // Botón para aceptar y guardar los datos
-        JButton btnAceptar = new JButton("Aceptar");
+        // Botón para aceptar los datos ingresados
+        JButton btnAceptar = new JButton("Siguiente");
         btnAceptar.setPreferredSize(new Dimension(100, 30));
         btnAceptar.addActionListener(e -> {
-            // Obtener los datos ingresados
+            // Guardar los datos ingresados en un HashMap
             String nombre = txtNombre.getText();
             String cedula = txtCedula.getText();
             String procedencia = txtProcedencia.getText();
-
-            // Guardar los datos en un HashMap
             HashMap<String, String> datos = new HashMap<>();
             datos.put("Nombre", nombre);
             datos.put("Cédula", cedula);
@@ -56,9 +58,7 @@ public class Inicio {
             // Abrir la ventana de la calculadora de huella de carbono
             CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
             calculadora.mostrarVentana();
-
-            // Cerrar la ventana de inicio
-            ventanaInicio.dispose();
+            ventanaInicio.dispose(); // Cerrar la ventana de inicio
         });
         panelPrincipal.add(btnAceptar, gbc);
 
@@ -67,20 +67,27 @@ public class Inicio {
         btnRegresar.setPreferredSize(new Dimension(100, 30));
         btnRegresar.addActionListener(e -> {
             Bienvenida bienvenida = new Bienvenida();
-            bienvenida.main(null);
+            bienvenida.main(null); // Mostrar la ventana de bienvenida
             ventanaInicio.dispose(); // Cerrar la ventana de inicio
         });
         gbc.gridx++;
         panelPrincipal.add(btnRegresar, gbc);
 
+        // Agregar espacio en blanco en la parte inferior para una mejor apariencia
+        gbc.gridy++;
+        gbc.gridx = 0;
+        gbc.gridwidth = 2;
+        panelPrincipal.add(Box.createVerticalStrut(30), gbc);
+
         // Agregar el panel principal a la ventana
         ventanaInicio.add(panelPrincipal);
-        ventanaInicio.setLocationRelativeTo(null);
-        ventanaInicio.setVisible(true);
+        ventanaInicio.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+        ventanaInicio.setVisible(true); // Hacer visible la ventana
     }
 
+    // Método principal para ejecutar la aplicación
     public static void main(String[] args) {
         Inicio inicio = new Inicio();
-        inicio.mostrarVentana();
+        inicio.mostrarVentana(); // Mostrar la ventana de inicio
     }
 }
