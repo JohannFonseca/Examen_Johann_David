@@ -3,41 +3,42 @@ import java.awt.*;
 
 public class Bienvenida {
     public static void main(String[] args) {
-        // Crear la ventana de bienvenida
+
+        // aqui creo la ventanay su titulo
         JFrame ventanaBienvenida = new JFrame("Bienvenida");
         ventanaBienvenida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear un panel con un color de fondo verde claro
+        // aqui es el panel y el colorcito verde
         JPanel panelFondo = new JPanel();
         panelFondo.setBackground(new Color(204, 255, 204)); // Verde clarito
         panelFondo.setBorder(BorderFactory.createLineBorder(new Color(0, 102, 0), 5)); // Borde verde oscuro
 
-        // Crear un mensaje de bienvenida
+        // cree un mensaje de 
         JLabel labelBienvenida1 = new JLabel("¡Bienvenido a la Calculadora", SwingConstants.CENTER);
         JLabel labelBienvenida2 = new JLabel("de Huella de Carbono!", SwingConstants.CENTER);
 
-        // Configurar las fuentes y tamaños de texto
+        // Tamaños y fuentes
         Font font = new Font("Arial", Font.BOLD, 24);
         labelBienvenida1.setFont(font);
         labelBienvenida2.setFont(font);
 
-        // Crear un botón para iniciar el cálculo
+        // boton funcional
         JButton btnIniciar = new JButton("Iniciar Cálculo");
-        btnIniciar.setPreferredSize(new Dimension(300, 50)); // Doble del tamaño original
+        btnIniciar.setPreferredSize(new Dimension(300, 50)); // tamaño del boton
         btnIniciar.addActionListener(e -> {
-            // Abrir la ventana de la calculadora
+
+            // abrir ventana siguiente
             CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
             calculadora.mostrarVentana();
-            ventanaBienvenida.dispose(); // Cerrar la ventana de bienvenida
+            ventanaBienvenida.dispose(); // para cerrar la ventana de bienvenida
         });
 
-        // Configurar el diseño del panelFondo
+        // para configurar el diseño del panelFondo
         GroupLayout layout = new GroupLayout(panelFondo);
         panelFondo.setLayout(layout);
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
 
-        // Configurar el GroupLayout
         layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                 .addComponent(labelBienvenida1)
                 .addComponent(labelBienvenida2)

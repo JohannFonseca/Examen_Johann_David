@@ -2,18 +2,19 @@ import javax.swing.*;
 
 public class Consejos {
     public void mostrarVentana() {
-        // Crear la ventana limpia
-        JFrame Consejos = new JFrame("Tips para mejorar tu huella");
-        Consejos.setSize(300, 200);
-        Consejos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Crear la ventana de consejos
+        JFrame ventanaConsejos = new JFrame("Tips para mejorar tu huella");
+        ventanaConsejos.setSize(300, 200);
+        ventanaConsejos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Mostrar la ventana limpia
-        Consejos.setVisible(true);
+        ventanaConsejos.setVisible(true);
     }
 
     public static void main(String[] args) {
-        Consejos Consejos = new Consejos();
-        Consejos.mostrarVentana();
+        Consejos consejos = new Consejos();
+        consejos.mostrarVentana();
     }
 }
+
 
