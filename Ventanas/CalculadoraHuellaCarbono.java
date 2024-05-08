@@ -4,7 +4,7 @@ import java.awt.*;
 public class CalculadoraHuellaCarbono {
     public void mostrarVentana() {
         JFrame ventanaCalculadora = new JFrame("Calculadora de Huella de Carbono");
-        ventanaCalculadora.setSize(400, 325);
+        ventanaCalculadora.setSize(500, 325);
         ventanaCalculadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panelPrincipal = new JPanel(new GridBagLayout());

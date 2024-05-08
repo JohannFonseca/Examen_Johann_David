@@ -65,14 +65,13 @@ public class Inicio {
         JButton btnRegresar = new JButton("Regresar");
         btnRegresar.setPreferredSize(new Dimension(100, 30));
         btnRegresar.addActionListener(e -> {
-            // Regresar a la ventana de la calculadora de huella de carbono
-            CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
-            calculadora.mostrarVentana();
-            ventanaInicio.dispose(); // Cerrar la ventana de inicio
+            Bienvenida bienvenida = new Bienvenida();
+            bienvenida.mostrarVentana();
+            ventanaInicio.dispose();
         });
         gbc.gridx++;
         panelPrincipal.add(btnRegresar, gbc);
-
+        
         ventanaInicio.add(panelPrincipal);
         ventanaInicio.setLocationRelativeTo(null);
         ventanaInicio.setVisible(true);
@@ -83,4 +82,5 @@ public class Inicio {
         inicio.mostrarVentana();
     }
 }
+
 
