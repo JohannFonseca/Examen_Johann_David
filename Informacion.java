@@ -32,7 +32,7 @@ public class Informacion {
         
         JLabel labelInformacion = new JLabel(textoHuellaCarbono);
         labelInformacion.setFont(new Font("Arial", Font.PLAIN, 16)); 
-        labelInformacion.setHorizontalAlignment(SwingConstants.LEFT); /
+        labelInformacion.setHorizontalAlignment(SwingConstants.LEFT);
         labelInformacion.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20)); 
 
         // Crear un botón de regresar
