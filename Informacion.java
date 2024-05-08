@@ -32,6 +32,7 @@ public class Informacion {
         
         JLabel labelInformacion = new JLabel(textoHuellaCarbono);
         labelInformacion.setFont(new Font("Arial", Font.PLAIN, 16)); // para cambiar la fuente y el tamaño según tus preferencias
+        labelInformacion.setHorizontalAlignment(SwingConstants.LEFT); // Alinea el texto a la izquierda
 
         // Crear un botón de regresar
         JButton btnRegresar = new JButton("Regresar");
@@ -74,5 +75,6 @@ public class Informacion {
         info.mostrarVentana();
     }
 }
+
 
 
