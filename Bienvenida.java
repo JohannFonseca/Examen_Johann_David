@@ -23,10 +23,10 @@ public class Bienvenida {
         labelBienvenida1.setFont(font);
         labelBienvenida2.setFont(font);
 
-        // Crear un botón para iniciar el cálculo
         JButton btnIniciar = new JButton("Iniciar");
         btnIniciar.setPreferredSize(new Dimension(300, 50)); // Tamaño del botón
         btnIniciar.addActionListener(e -> {
+            // Obtener los datos del usuario de la clase Inicio
             Inicio inicio = new Inicio();
             inicio.mostrarVentana();
             ventanaBienvenida.dispose();

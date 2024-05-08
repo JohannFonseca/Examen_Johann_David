@@ -2,6 +2,25 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CalculadoraHuellaCarbono {
+
+    private String nombre;
+    private String cedula;
+    private String procedencia;
+
+     // Constructor que recibe los datos del usuario
+     public CalculadoraHuellaCarbono(String nombre, String cedula, String procedencia) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.procedencia = procedencia;
+    }
+
+    // Método para establecer los datos del usuario
+    public void setDatosUsuario(String nombre, String cedula, String procedencia) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.procedencia = procedencia;
+    }
+
     public void mostrarVentana() {
         JFrame ventanaCalculadora = new JFrame("Calculadora de Huella de Carbono");
         ventanaCalculadora.setSize(500, 400);
@@ -68,8 +87,11 @@ public class CalculadoraHuellaCarbono {
 
             double huellaCarbono = calcularHuellaCarbono(respuesta2, respuesta3, respuesta4, respuesta5);
 
-            String mensaje = "La huella de carbono calculada es: " + huellaCarbono + "\n\n¿Qué deseas hacer?";
-            Object[] opciones = {"Consejos", "Aceptar", "Cerrar"};
+            // Construir el mensaje que incluye los datos del usuario y la huella de carbono
+            String mensaje = "Usuario:\nNombre: " + nombre + "\nCédula: " + cedula + "\nLugar de procedencia: "
+                    + procedencia
+                    + "\n\nLa huella de carbono calculada es: " + huellaCarbono + "\n\n¿Qué deseas hacer?";
+            Object[] opciones = { "Consejos", "Aceptar", "Cerrar" };
             int seleccion = JOptionPane.showOptionDialog(null, mensaje, "Resultado",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
                     null, opciones, opciones[0]);
@@ -119,11 +141,6 @@ public class CalculadoraHuellaCarbono {
     }
 
     public static void main(String[] args) {
-        CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
-        calculadora.mostrarVentana();
+        
     }
 }
-
-
-
-

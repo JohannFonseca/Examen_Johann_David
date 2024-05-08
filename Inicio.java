@@ -1,12 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 
 public class Inicio {
     private JFrame ventanaInicio;
+    private JTextField txtNombre;
+    private JTextField txtCedula;
+    private JTextField txtProcedencia;
 
-    // Método para mostrar la ventana de inicio
-    public void mostrarVentana() {
+    // Constructor
+    public Inicio() {
         // Crear la ventana de inicio
         ventanaInicio = new JFrame("Inicio");
         ventanaInicio.setSize(450, 450);
@@ -23,7 +25,7 @@ public class Inicio {
 
         // Etiqueta y campo de texto para el nombre
         JLabel labelNombre = new JLabel("Nombre:");
-        JTextField txtNombre = new JTextField(20);
+        txtNombre = new JTextField(20);
         panelPrincipal.add(labelNombre, gbc);
         gbc.gridx++;
         panelPrincipal.add(txtNombre, gbc);
@@ -32,7 +34,7 @@ public class Inicio {
         gbc.gridx = 0;
         gbc.gridy++;
         JLabel labelCedula = new JLabel("Cédula:");
-        JTextField txtCedula = new JTextField(20);
+        txtCedula = new JTextField(20);
         panelPrincipal.add(labelCedula, gbc);
         gbc.gridx++;
         panelPrincipal.add(txtCedula, gbc);
@@ -41,7 +43,7 @@ public class Inicio {
         gbc.gridx = 0;
         gbc.gridy++;
         JLabel labelProcedencia = new JLabel("Lugar de Procedencia:");
-        JTextField txtProcedencia = new JTextField(20);
+        txtProcedencia = new JTextField(20);
         panelPrincipal.add(labelProcedencia, gbc);
         gbc.gridx++;
         panelPrincipal.add(txtProcedencia, gbc);
@@ -57,32 +59,19 @@ public class Inicio {
         JButton btnAceptar = new JButton("Siguiente");
         btnAceptar.setPreferredSize(new Dimension(100, 30));
         btnAceptar.addActionListener(e -> {
-            // Guardar los datos ingresados en un HashMap
+            // Guardar los datos ingresados en la clase
             String nombre = txtNombre.getText();
             String cedula = txtCedula.getText();
             String procedencia = txtProcedencia.getText();
-            HashMap<String, String> datos = new HashMap<>();
-            datos.put("Nombre", nombre);
-            datos.put("Cédula", cedula);
-            datos.put("Procedencia", procedencia);
 
-            // Abrir la ventana de la calculadora de huella de carbono
-            CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
+            // Crear una instancia de la clase CalculadoraHuellaCarbono y mostrar su ventana
+            CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono(nombre, cedula, procedencia);
             calculadora.mostrarVentana();
-            ventanaInicio.dispose(); // Cerrar la ventana de inicio
+
+            // Cerrar la ventana actual de Inicio
+            ventanaInicio.dispose();
         });
         panelPrincipal.add(btnAceptar, gbc);
-
-        // Botón para regresar a la ventana de bienvenida
-        gbc.gridy++;
-        JButton btnRegresar = new JButton("Regresar");
-        btnRegresar.setPreferredSize(new Dimension(100, 30));
-        btnRegresar.addActionListener(e -> {
-            Bienvenida bienvenida = new Bienvenida();
-            bienvenida.main(null); // Mostrar la ventana de bienvenida
-            ventanaInicio.dispose(); // Cerrar la ventana de inicio
-        });
-        panelPrincipal.add(btnRegresar, gbc);
 
         // Agregar el panel principal a la ventana
         ventanaInicio.add(panelPrincipal);
@@ -90,9 +79,23 @@ public class Inicio {
         ventanaInicio.setVisible(true); // Hacer visible la ventana
     }
 
+    // Método para obtener el nombre ingresado
+    public String getNombre() {
+        return txtNombre.getText();
+    }
+
+    // Método para obtener la cédula ingresada
+    public String getCedula() {
+        return txtCedula.getText();
+    }
+
+    // Método para obtener el lugar de procedencia ingresado
+    public String getProcedencia() {
+        return txtProcedencia.getText();
+    }
+
     // Método principal para ejecutar la aplicación
     public static void main(String[] args) {
         Inicio inicio = new Inicio();
-        inicio.mostrarVentana(); // Mostrar la ventana de inicio
     }
 }
