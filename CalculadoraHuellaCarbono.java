@@ -5,72 +5,125 @@ public class CalculadoraHuellaCarbono {
     public void mostrarVentana() {
         // Crear la ventana de la calculadora
         JFrame ventanaCalculadora = new JFrame("Calculadora de Huella de Carbono");
-        ventanaCalculadora.setSize(700, 400);
+        ventanaCalculadora.setSize(400, 325);
         ventanaCalculadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Crear un panel principal con color de fondo verde claro
-        JPanel panelPrincipal = new JPanel();
+        JPanel panelPrincipal = new JPanel(new GridBagLayout());
         panelPrincipal.setBackground(new Color(204, 255, 204)); // Verde clarito
-        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(5, 10, 5, 10); // Margen
 
         // Crear componentes visuales para las preguntas
         JPanel panelPreguntas = new JPanel();
         panelPreguntas.setLayout(new BoxLayout(panelPreguntas, BoxLayout.Y_AXIS));
 
         // Pregunta 1
-        JLabel labelPregunta1 = new JLabel("¿Cuántas veces a la semana comes carne?");
-        JTextField txtRespuesta1 = new JTextField(10); // Campo de texto para la respuesta
-        JPanel panelPregunta1 = new JPanel();
-        panelPregunta1.add(labelPregunta1);
-        panelPregunta1.add(txtRespuesta1);
-        panelPreguntas.add(panelPregunta1);
+        JLabel labelPregunta1 = new JLabel("¿Cuál es su nombre?");
+        JTextField txtRespuesta1 = new JTextField(3);
+        gbc.gridwidth = 2; // Centra la etiqueta ocupando dos columnas
+        panelPrincipal.add(labelPregunta1, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1; // Restaura el valor de gridwidth a 1 para los componentes siguientes
+        panelPrincipal.add(txtRespuesta1, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
 
+
+        
         // Pregunta 2
-        JLabel labelPregunta2 = new JLabel("¿Cuántos kilómetros conduces tu coche por semana?");
-        JTextField txtRespuesta2 = new JTextField(10); // Campo de texto para la respuesta
-        JPanel panelPregunta2 = new JPanel();
-        panelPregunta2.add(labelPregunta2);
-        panelPregunta2.add(txtRespuesta2);
-        panelPreguntas.add(panelPregunta2);
+        JLabel labelPregunta2 = new JLabel("¿Cuántas veces a la semana comes carne?");
+        JTextField txtRespuesta2 = new JTextField(3); // Campo de texto para la respuesta
+        gbc.gridwidth = 2; // Centra la etiqueta ocupando dos columnas
+        panelPrincipal.add(labelPregunta2, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1; // Restaura el valor de gridwidth a 1 para los componentes siguientes
+        panelPrincipal.add(txtRespuesta2, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
 
         // Pregunta 3
-        JLabel labelPregunta3 = new JLabel("¿Cuántas veces al mes utilizas transporte público?");
-        JTextField txtRespuesta3 = new JTextField(10); // Campo de texto para la respuesta
-        JPanel panelPregunta3 = new JPanel();
-        panelPregunta3.add(labelPregunta3);
-        panelPregunta3.add(txtRespuesta3);
-        panelPreguntas.add(panelPregunta3);
+        JLabel labelPregunta3 = new JLabel("¿Cuántos kilómetros conduces tu coche por semana?");
+        JTextField txtRespuesta3 = new JTextField(3); // Campo de texto para la respuesta
+        gbc.gridwidth = 2;
+        panelPrincipal.add(labelPregunta3, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        panelPrincipal.add(txtRespuesta3, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
 
         // Pregunta 4
-        JLabel labelPregunta4 = new JLabel("¿Cuántas veces compras productos empaquetados por semana?");
-        JTextField txtRespuesta4 = new JTextField(10); // Campo de texto para la respuesta
-        JPanel panelPregunta4 = new JPanel();
-        panelPregunta4.add(labelPregunta4);
-        panelPregunta4.add(txtRespuesta4);
-        panelPreguntas.add(panelPregunta4);
+        JLabel labelPregunta4 = new JLabel("¿Cuántas veces al mes utilizas transporte público?");
+        JTextField txtRespuesta4 = new JTextField(3); // Campo de texto para la respuesta
+        gbc.gridwidth = 2;
+        panelPrincipal.add(labelPregunta4, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        panelPrincipal.add(txtRespuesta4, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+
+        // Pregunta 5
+        JLabel labelPregunta5 = new JLabel("¿Cuántas veces compras productos empaquetados por semana?");
+        JTextField txtRespuesta5 = new JTextField(3); // Campo de texto para la respuesta
+        gbc.gridwidth = 2;
+        panelPrincipal.add(labelPregunta5, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        panelPrincipal.add(txtRespuesta5, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
 
         // Crear un botón para calcular
         JButton btnCalcular = new JButton("Calcular");
+        btnCalcular.setPreferredSize(new Dimension(60, 30)); // Tamaño personalizado
         btnCalcular.addActionListener(e -> {
             // Obtener respuestas del usuario
-            int respuesta1 = Integer.parseInt(txtRespuesta1.getText());
+            String respuesta1 = txtRespuesta1.getText();
             int respuesta2 = Integer.parseInt(txtRespuesta2.getText());
             int respuesta3 = Integer.parseInt(txtRespuesta3.getText());
             int respuesta4 = Integer.parseInt(txtRespuesta4.getText());
+            int respuesta5 = Integer.parseInt(txtRespuesta5.getText());
 
             // Calcular huella de carbono (aquí solo un ejemplo)
-            double huellaCarbono = calcularHuellaCarbono(respuesta1, respuesta2, respuesta3, respuesta4);
+            double huellaCarbono = calcularHuellaCarbono(respuesta1, respuesta2, respuesta3, respuesta4, respuesta5);
 
-            // Abrir la ventana de consejos
+            // Mostrar el resultado en un JOptionPane
+            String mensaje = "La huella de carbono calculada es: " + huellaCarbono + "\n\n¿Qué deseas hacer?";
+            Object[] opciones = {"Consejos", "Aceptar", "Cerrar"};
+            int seleccion = JOptionPane.showOptionDialog(null, mensaje, "Resultado",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+            null, opciones, opciones[0]);
+
+             // Manejar la selección del usuario
+    switch (seleccion) {
+        case 0:
+            // Opción "Consejos"
             Consejos consejos = new Consejos();
             consejos.mostrarVentana();
-
-            // Cerrar la ventana actual
-            ventanaCalculadora.dispose();
+            break;
+        case 1:
+            // Opción "Aceptar"
+            // Hacer algo si el usuario elige "Aceptar"
+            break;
+        case 2:
+            // Opción "Cerrar"
+            ventanaCalculadora.dispose(); // Cerrar la ventana actual
+            break;
+        default:
+            // Por defecto, no hacer nada
+            break;
+    }
         });
 
         // Botón de regreso
         JButton btnRegresar = new JButton("Regresar");
+        btnRegresar.setPreferredSize(new Dimension(30, 30)); // Tamaño personalizado
         btnRegresar.addActionListener(e -> {
             // Abrir la ventana de bienvenida
             Bienvenida bienvenida = new Bienvenida();
@@ -80,8 +133,16 @@ public class CalculadoraHuellaCarbono {
 
         // Agregar componentes al panel principal
         panelPrincipal.add(panelPreguntas);
-        panelPrincipal.add(btnCalcular);
-        panelPrincipal.add(btnRegresar); // Agregar botón de regreso
+        // Agregar botones al panel principal
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        gbc.weightx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        panelPrincipal.add(btnCalcular, gbc);
+
+        gbc.gridx++;
+        panelPrincipal.add(btnRegresar, gbc);
 
         // Agregar el panel principal a la ventana
         ventanaCalculadora.add(panelPrincipal);
@@ -103,6 +164,6 @@ public class CalculadoraHuellaCarbono {
         CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
         calculadora.mostrarVentana();
     }
-}
+}   
 
 
