@@ -31,9 +31,9 @@ public class Informacion {
 
         
         JLabel labelInformacion = new JLabel(textoHuellaCarbono);
-        labelInformacion.setFont(new Font("Arial", Font.PLAIN, 16)); // para cambiar la fuente y el tamaño según tus preferencias
-        labelInformacion.setHorizontalAlignment(SwingConstants.LEFT); // Alinea el texto a la izquierda
-        labelInformacion.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20)); // Establece un margen derecho para el JLabel
+        labelInformacion.setFont(new Font("Arial", Font.PLAIN, 16)); 
+        labelInformacion.setHorizontalAlignment(SwingConstants.LEFT); /
+        labelInformacion.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20)); 
 
         // Crear un botón de regresar
         JButton btnRegresar = new JButton("Regresar");
@@ -45,27 +45,27 @@ public class Informacion {
             }
         });
 
-        // Crear un panel para el botón de regresar y centrarlo
+        
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panelBoton.add(btnRegresar);
 
-        // Crear un panel para organizar el contenido verticalmente
+        
         JPanel panelContenido = new JPanel();
         panelContenido.setLayout(new BoxLayout(panelContenido, BoxLayout.Y_AXIS));
         panelContenido.add(labelInformacion);
-        panelContenido.add(Box.createVerticalGlue()); // Espacio vertical flexible
+        panelContenido.add(Box.createVerticalGlue()); 
         panelContenido.add(panelBoton);
 
-        // Agregar el panel de contenido al panel principal
+        
         panelFondo.add(panelContenido);
 
-        // Agregar el panel a la ventana
+        
         ventanaInformacion.getContentPane().add(panelFondo, BorderLayout.CENTER);
 
-        // Ajustar el tamaño de la ventana para que se adapte al contenido
-        ventanaInformacion.setSize(1000, 440); // Menos ancho y más largo
+        
+        ventanaInformacion.setSize(1000, 440); 
 
-        // Centrar la ventana en la pantalla
+        
         ventanaInformacion.setLocationRelativeTo(null);
 
         ventanaInformacion.setVisible(true);
