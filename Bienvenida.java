@@ -24,6 +24,12 @@ public class Bienvenida {
         // Crear un botón para iniciar el cálculo
         JButton btnIniciar = new JButton("Iniciar Cálculo");
         btnIniciar.setPreferredSize(new Dimension(300, 50)); // Doble del tamaño original
+        btnIniciar.addActionListener(e -> {
+            // Abrir la ventana de la calculadora
+            CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
+            calculadora.mostrarVentana();
+            ventanaBienvenida.dispose(); // Cerrar la ventana de bienvenida
+        });
 
         // Configurar el diseño del panelFondo
         GroupLayout layout = new GroupLayout(panelFondo);
@@ -47,9 +53,6 @@ public class Bienvenida {
 
         // Agregar el panel a la ventana
         ventanaBienvenida.getContentPane().add(panelFondo, BorderLayout.CENTER);
-        
-        // Agregar el botón a la ventana
-        ventanaBienvenida.getContentPane().add(btnIniciar, BorderLayout.SOUTH);
 
         // Centrar la ventana en la pantalla
         ventanaBienvenida.pack();
@@ -58,3 +61,4 @@ public class Bienvenida {
         ventanaBienvenida.setVisible(true);
     }
 }
+
