@@ -5,7 +5,7 @@ public class CalculadoraHuellaCarbono {
     public void mostrarVentana() {
         // Crear la ventana de la calculadora
         JFrame ventanaCalculadora = new JFrame("Calculadora de Huella de Carbono");
-        ventanaCalculadora.setSize(400, 300);
+        ventanaCalculadora.setSize(700, 400);
         ventanaCalculadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Crear un panel principal con color de fondo verde claro
