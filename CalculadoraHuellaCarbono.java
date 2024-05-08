@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class CalculadoraHuellaCarbono {
     public void mostrarVentana() {
@@ -6,6 +7,11 @@ public class CalculadoraHuellaCarbono {
         JFrame ventanaCalculadora = new JFrame("Calculadora de Huella de Carbono");
         ventanaCalculadora.setSize(400, 300);
         ventanaCalculadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Crear un panel con un color de fondo verde claro
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setBackground(new Color(204, 255, 204)); // Verde clarito
+        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
 
         // Crear componentes visuales para las preguntas
         JPanel panelPreguntas = new JPanel();
@@ -73,7 +79,6 @@ public class CalculadoraHuellaCarbono {
         });
 
         // Agregar componentes al panel principal
-        JPanel panelPrincipal = new JPanel();
         panelPrincipal.add(panelPreguntas);
         panelPrincipal.add(btnCalcular);
         panelPrincipal.add(btnRegresar); // Agregar botón de regreso
@@ -100,4 +105,5 @@ public class CalculadoraHuellaCarbono {
         calculadora.mostrarVentana();
     }
 }
+
 
