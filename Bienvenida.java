@@ -5,11 +5,7 @@ public class Bienvenida {
     public static void main(String[] args) {
         // Crear la ventana de bienvenida
         JFrame ventanaBienvenida = new JFrame("Bienvenida");
-        ventanaBienvenida.setSize(800, 400);
         ventanaBienvenida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Obtener el tamaño de la pantalla
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         // Crear un panel con un color de fondo verde claro
         JPanel panelFondo = new JPanel();
@@ -42,20 +38,20 @@ public class Bienvenida {
                 .addComponent(btnIniciar)
         );
         layout.setVerticalGroup(layout.createSequentialGroup()
-                .addGap(screenSize.height / 4) // Centrar verticalmente
+                .addGap(100) // Espacio superior
                 .addComponent(labelBienvenida1)
                 .addComponent(labelBienvenida2)
-                .addGap(screenSize.height / 4) // Espacio adicional
+                .addGap(100) // Espacio entre el texto y el botón
                 .addComponent(btnIniciar)
         );
 
         // Agregar el panel a la ventana
-        ventanaBienvenida.add(panelFondo);
+        ventanaBienvenida.getContentPane().add(panelFondo, BorderLayout.CENTER);
 
         // Centrar la ventana en la pantalla
+        ventanaBienvenida.pack();
         ventanaBienvenida.setLocationRelativeTo(null);
 
         ventanaBienvenida.setVisible(true);
     }
 }
-
