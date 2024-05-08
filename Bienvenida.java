@@ -11,12 +11,7 @@ public class Bienvenida {
         // Crear un panel con un color de fondo verde claro
         JPanel panelFondo = new JPanel();
         panelFondo.setBackground(new Color(204, 255, 204)); // Verde clarito
-
-        // Crear un borde para el panel
-        panelFondo.setBorder(BorderFactory.createLineBorder(new Color(0, 102, 0), 5)); // Verde oscuro
-
-        // Configurar el diseño del panel
-        panelFondo.setLayout(new BorderLayout());
+        panelFondo.setBorder(BorderFactory.createLineBorder(new Color(0, 102, 0), 5)); // Borde verde oscuro
 
         // Crear un mensaje de bienvenida
         JLabel labelBienvenida1 = new JLabel("¡Bienvenido a la Calculadora", SwingConstants.CENTER);
@@ -27,10 +22,6 @@ public class Bienvenida {
         labelBienvenida1.setFont(font);
         labelBienvenida2.setFont(font);
 
-        // Agregar los mensajes de bienvenida al panel
-        panelFondo.add(labelBienvenida1, BorderLayout.NORTH);
-        panelFondo.add(labelBienvenida2, BorderLayout.CENTER);
-
         // Crear un botón para iniciar el cálculo
         JButton btnIniciar = new JButton("Iniciar Cálculo");
         btnIniciar.addActionListener(e -> {
@@ -40,8 +31,24 @@ public class Bienvenida {
             ventanaBienvenida.dispose(); // Cerrar la ventana de bienvenida
         });
 
-        // Agregar el botón al panel
-        panelFondo.add(btnIniciar, BorderLayout.SOUTH);
+        // Configurar el diseño del panelFondo
+        GroupLayout layout = new GroupLayout(panelFondo);
+        panelFondo.setLayout(layout);
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+        // Configurar el GroupLayout
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                .addComponent(labelBienvenida1)
+                .addComponent(labelBienvenida2)
+                .addComponent(btnIniciar)
+        );
+        layout.setVerticalGroup(layout.createSequentialGroup()
+                .addComponent(labelBienvenida1)
+                .addComponent(labelBienvenida2)
+                .addGap(50)
+                .addComponent(btnIniciar)
+        );
 
         // Agregar el panel a la ventana
         ventanaBienvenida.add(panelFondo);
@@ -49,6 +56,3 @@ public class Bienvenida {
         ventanaBienvenida.setVisible(true);
     }
 }
-
-
-
