@@ -57,7 +57,7 @@ public class Informacion {
         ventanaInformacion.getContentPane().add(panelFondo, BorderLayout.CENTER);
 
         // Ajustar el tamaño de la ventana para que se adapte al contenido
-        ventanaInformacion.setSize(600, 800); // Menos ancho y más largo
+        ventanaInformacion.setSize(800, 600); // Menos ancho y más largo
 
         // Centrar la ventana en la pantalla
         ventanaInformacion.setLocationRelativeTo(null);
