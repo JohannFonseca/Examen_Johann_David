@@ -1,6 +1,9 @@
 // Informacion.java
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class Informacion {
     public void mostrarVentana() {
