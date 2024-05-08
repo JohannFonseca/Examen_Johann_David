@@ -1,39 +1,48 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Bienvenida {
     public static void main(String[] args) {
-
-        // aqui creo la ventanay su titulo
+        // Crear la ventana de bienvenida
         JFrame ventanaBienvenida = new JFrame("Bienvenida");
         ventanaBienvenida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // aqui es el panel y el colorcito verde
+        // Crear un panel con un color de fondo verde claro
         JPanel panelFondo = new JPanel();
         panelFondo.setBackground(new Color(204, 255, 204)); // Verde clarito
         panelFondo.setBorder(BorderFactory.createLineBorder(new Color(0, 102, 0), 5)); // Borde verde oscuro
 
-        // cree un mensaje de 
+        // Crear un mensaje de bienvenida
         JLabel labelBienvenida1 = new JLabel("¡Bienvenido a la Calculadora", SwingConstants.CENTER);
         JLabel labelBienvenida2 = new JLabel("de Huella de Carbono!", SwingConstants.CENTER);
 
-        // Tamaños y fuentes
+        // Configurar las fuentes y tamaños de texto
         Font font = new Font("Arial", Font.BOLD, 24);
         labelBienvenida1.setFont(font);
         labelBienvenida2.setFont(font);
 
-        // boton funcional
+        // Crear un botón para iniciar el cálculo
         JButton btnIniciar = new JButton("Iniciar Cálculo");
-        btnIniciar.setPreferredSize(new Dimension(300, 50)); // tamaño del boton
+        btnIniciar.setPreferredSize(new Dimension(300, 50)); // Tamaño del botón
         btnIniciar.addActionListener(e -> {
-
-            // abrir ventana siguiente
+            // Abrir la ventana de la calculadora
             CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono();
             calculadora.mostrarVentana();
-            ventanaBienvenida.dispose(); // para cerrar la ventana de bienvenida
+            ventanaBienvenida.dispose(); // Cerrar la ventana de bienvenida
         });
 
-        // para configurar el diseño del panelFondo
+        // Crear un botón para ver información
+        JButton btnInformacion = new JButton("Información");
+        btnInformacion.setPreferredSize(new Dimension(300, 50)); // Tamaño del botón
+        btnInformacion.addActionListener(e -> {
+            // Abrir la ventana de información
+            Informacion info = new Informacion();
+            info.mostrarVentana();
+            ventanaBienvenida.dispose(); // Cerrar la ventana de bienvenida
+        });
+
+        // Configurar el diseño del panelFondo
         GroupLayout layout = new GroupLayout(panelFondo);
         panelFondo.setLayout(layout);
         layout.setAutoCreateGaps(true);
@@ -43,13 +52,15 @@ public class Bienvenida {
                 .addComponent(labelBienvenida1)
                 .addComponent(labelBienvenida2)
                 .addComponent(btnIniciar)
+                .addComponent(btnInformacion) // Agregar el nuevo botón
         );
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGap(100) // Espacio superior
                 .addComponent(labelBienvenida1)
                 .addComponent(labelBienvenida2)
-                .addGap(100) // Espacio entre el texto y el botón
+                .addGap(100) // Espacio entre el texto y el botón "Iniciar Cálculo"
                 .addComponent(btnIniciar)
+                .addComponent(btnInformacion) // Agregar el nuevo botón
         );
 
         // Agregar el panel a la ventana
@@ -62,4 +73,5 @@ public class Bienvenida {
         ventanaBienvenida.setVisible(true);
     }
 }
+
 
