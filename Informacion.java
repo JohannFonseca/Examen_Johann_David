@@ -16,13 +16,17 @@ public class Informacion {
         // Texto sobre la huella de carbono
         String textoHuellaCarbono = "<html><body>"
                                     + "<h1>¿Qué es la huella de carbono?</h1>"
-                                    + "<p>La huella de carbono es una medida de la cantidad total de gases de efecto invernadero (GEI) emitidos a la atmósfera debido a las actividades humanas, expresada en términos de dióxido de carbono equivalente (CO2e).</p>"
-                                    + "<p>Estas emisiones provienen principalmente de la quema de combustibles fósiles como el petróleo, el gas natural y el carbón para generar energía, así como de actividades como la producción industrial, la agricultura y el transporte.</p>"
+                                    + "<p>La huella de carbono es una medida de la cantidad total de gases de efecto invernadero (GEI) emitidos a </p>"
+                                    +"<p>la atmósfera debido a las actividades humanas, expresada en términos de dióxido de carbono equivalente (CO2e).<p>"
+                                    + "<p>Estas emisiones provienen principalmente de la quema de combustibles fósiles como el petróleo, el gas natural<p>"
+                                    +"<p> y el carbón para generar energía, así como de actividades como la producción industrial, la agricultura y el transporte.</p>"
                                     + "<h1>¿Por qué es importante reducir nuestra huella de carbono?</h1>"
                                     + "<p>Reducir nuestra huella de carbono es crucial para combatir el cambio climático y sus impactos devastadores en el medio ambiente y la sociedad.</p>"
-                                    + "<p>Algunas formas de reducir nuestra huella de carbono incluyen el uso de energías renovables, la eficiencia energética, la adopción de prácticas agrícolas sostenibles, el transporte sostenible y la reducción del consumo de productos con alto contenido de carbono.</p>"
+                                    + "<p>Algunas formas de reducir nuestra huella de carbono incluyen el uso de energías renovables, la eficiencia energética, la adopción de prácticas <p>"
+                                    + "<p>agrícolas sostenibles, el transporte sostenible y la reducción del consumo de productos con alto contenido de carbono.</p>"
                                     + "<h1>¿Cómo podemos reducir nuestra huella de carbono?</h1>"
-                                    + "<p>Pequeñas acciones individuales, como caminar o andar en bicicleta en lugar de conducir, reducir el consumo de carne y productos lácteos, y reciclar y reutilizar materiales, pueden marcar una gran diferencia cuando se trata de reducir nuestra huella de carbono y crear un futuro más sostenible para todos.</p>"
+                                    + "<p>Pequeñas acciones individuales, como caminar o andar en bicicleta en lugar de conducir, reducir el consumo de carne y productos lácteos, y reciclar<p."
+                                    + "<p>y reutilizar materiales, pueden marcar una gran diferencia cuando se trata de reducir nuestra huella de carbono y crear un futuro más sostenible para todos.</p>"
                                     + "</body></html>";
 
         
@@ -57,7 +61,7 @@ public class Informacion {
         ventanaInformacion.getContentPane().add(panelFondo, BorderLayout.CENTER);
 
         // Ajustar el tamaño de la ventana para que se adapte al contenido
-        ventanaInformacion.setSize(800, 600); // Menos ancho y más largo
+        ventanaInformacion.setSize(1000, 440); // Menos ancho y más largo
 
         // Centrar la ventana en la pantalla
         ventanaInformacion.setLocationRelativeTo(null);
