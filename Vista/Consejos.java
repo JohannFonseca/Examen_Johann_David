@@ -1,3 +1,4 @@
+package Vista;
 import javax.swing.*;
 
 public class Consejos {
@@ -5,7 +6,7 @@ public class Consejos {
         // Crear la ventana de consejos
         JFrame ventanaConsejos = new JFrame("Tips para mejorar tu huella");
         ventanaConsejos.setSize(500, 150);
-        ventanaConsejos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventanaConsejos.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         // Crear un JLabel con los consejos
         JLabel etiquetaConsejos = new JLabel("<html><p>Consejo 1: Utiliza transporte público o bicicleta.</p>"

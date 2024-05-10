@@ -1,4 +1,8 @@
+package Controlador;
 import javax.swing.*;
+
+import Modelo.CalculadoraHuellaCarbono;
+
 import java.awt.*;
 
 public class Inicio {

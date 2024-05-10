@@ -1,4 +1,9 @@
+package Modelo;
 import javax.swing.*;
+
+import Vista.Bienvenida;
+import Vista.Consejos;
+
 import java.awt.*;
 
 public class CalculadoraHuellaCarbono {

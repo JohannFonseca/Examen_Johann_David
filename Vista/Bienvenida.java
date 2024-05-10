@@ -1,5 +1,10 @@
+package Vista;
 
 import javax.swing.*;
+
+import Controlador.Inicio;
+import Modelo.Informacion;
+
 import java.awt.*;
 
 public class Bienvenida {

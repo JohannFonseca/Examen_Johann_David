@@ -1,4 +1,8 @@
+package Modelo;
 import javax.swing.*;
+
+import Vista.Bienvenida;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
