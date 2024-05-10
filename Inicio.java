@@ -23,6 +23,9 @@ public class Inicio {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(10, 10, 10, 10);
 
+        ImageIcon iconoSiguiente = resizeImageIcon(new ImageIcon("images/siguiente.png"), 30, 30);
+
+
         // Etiqueta y campo de texto para el nombre
         JLabel labelNombre = new JLabel("Nombre:");
         txtNombre = new JTextField(20);
@@ -56,7 +59,7 @@ public class Inicio {
 
         // Botón para aceptar los datos ingresados
         gbc.gridy++;
-        JButton btnAceptar = new JButton("Siguiente");
+        JButton btnAceptar = new JButton(iconoSiguiente);
         btnAceptar.setPreferredSize(new Dimension(100, 30));
         btnAceptar.addActionListener(e -> {
             // Guardar los datos ingresados en la clase
@@ -97,5 +100,11 @@ public class Inicio {
     // Método principal para ejecutar la aplicación
     public static void main(String[] args) {
         Inicio inicio = new Inicio();
+    }
+
+    private static ImageIcon resizeImageIcon(ImageIcon icon, int width, int height) {
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(newImg);
     }
 }

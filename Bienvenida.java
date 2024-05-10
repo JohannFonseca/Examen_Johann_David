@@ -1,7 +1,6 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class Bienvenida {
     public static void main(String[] args) {
@@ -23,6 +22,8 @@ public class Bienvenida {
         labelBienvenida1.setFont(font);
         labelBienvenida2.setFont(font);
 
+        ImageIcon iconoInformacion = resizeImageIcon(new ImageIcon("images/idea.png"), 30, 50);
+
         JButton btnIniciar = new JButton("Iniciar");
         btnIniciar.setPreferredSize(new Dimension(300, 50)); // Tamaño del botón
         btnIniciar.addActionListener(e -> {
@@ -33,8 +34,7 @@ public class Bienvenida {
         });
 
         // Crear un botón para ver información
-        JButton btnInformacion = new JButton("Información");
-        btnInformacion.setPreferredSize(new Dimension(300, 50)); // Tamaño del botón
+        JButton btnInformacion = new JButton(iconoInformacion);
         btnInformacion.addActionListener(e -> {
             // Abrir la ventana de información
             Informacion info = new Informacion();
@@ -71,5 +71,13 @@ public class Bienvenida {
         ventanaBienvenida.setLocationRelativeTo(null);
 
         ventanaBienvenida.setVisible(true);
+
     }
+
+    private static ImageIcon resizeImageIcon(ImageIcon icon, int width, int height) {
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(newImg);
+    }
+
 }

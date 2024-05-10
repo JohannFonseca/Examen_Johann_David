@@ -37,6 +37,9 @@ public class CalculadoraHuellaCarbono {
         JPanel panelPreguntas = new JPanel();
         panelPreguntas.setLayout(new BoxLayout(panelPreguntas, BoxLayout.Y_AXIS));
 
+        ImageIcon iconoCalculadora = resizeImageIcon(new ImageIcon("images/Calculadora.jpg"), 30, 30);
+
+
         JLabel labelPregunta2 = new JLabel("¿Cuántas veces a la semana comes carne?");
         JTextField txtRespuesta2 = new JTextField(3);
         gbc.gridwidth = 2;
@@ -77,7 +80,7 @@ public class CalculadoraHuellaCarbono {
         gbc.gridx = 0;
         gbc.gridy++;
 
-        JButton btnCalcular = new JButton("Calcular");
+        JButton btnCalcular = new JButton(iconoCalculadora);
         btnCalcular.setPreferredSize(new Dimension(60, 30));
         btnCalcular.addActionListener(e -> {
             int respuesta2 = Integer.parseInt(txtRespuesta2.getText());
@@ -142,5 +145,11 @@ public class CalculadoraHuellaCarbono {
 
     public static void main(String[] args) {
         
+    }
+
+    private static ImageIcon resizeImageIcon(ImageIcon icon, int width, int height) {
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(newImg);
     }
 }
