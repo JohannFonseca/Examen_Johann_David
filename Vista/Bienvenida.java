@@ -1,14 +1,12 @@
 package Vista;
 
 import javax.swing.*;
-
 import Controlador.Inicio;
 import Modelo.Informacion;
-
 import java.awt.*;
 
 public class Bienvenida {
-    public static void main(String[] args) {
+    public static void mostrarVentana() {
         // Crear la ventana de bienvenida
         JFrame ventanaBienvenida = new JFrame("Bienvenida");
         ventanaBienvenida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +61,7 @@ public class Bienvenida {
                 .addGap(100) // Espacio superior
                 .addComponent(labelBienvenida1)
                 .addComponent(labelBienvenida2)
-                .addGap(100) 
+                .addGap(100)
                 .addComponent(btnIniciar)
                 .addComponent(btnInformacion) // Agregar el nuevo botón
         );
@@ -76,7 +74,6 @@ public class Bienvenida {
         ventanaBienvenida.setLocationRelativeTo(null);
 
         ventanaBienvenida.setVisible(true);
-
     }
 
     private static ImageIcon resizeImageIcon(ImageIcon icon, int width, int height) {
