@@ -1,0 +1,473 @@
+package Vista;
+
+import javax.swing.*;
+
+import Controlador.Inicio;
+import Modelo.Informacion;
+
+import java.awt.*;
+
+public class Bienvenida {
+    public static void main(String[] args) {
+        // Crear la ventana de bienvenida
+        JFrame ventanaBienvenida = new JFrame("Bienvenida");
+        ventanaBienvenida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Crear un panel con un color de fondo verde claro
+        JPanel panelFondo = new JPanel();
+        panelFondo.setBackground(new Color(204, 255, 204)); // Verde clarito
+        panelFondo.setBorder(BorderFactory.createLineBorder(new Color(0, 102, 0), 5)); // Borde verde oscuro
+
+        // Crear un mensaje de bienvenida
+        JLabel labelBienvenida1 = new JLabel("¡Bienvenido a la Calculadora", SwingConstants.CENTER);
+        JLabel labelBienvenida2 = new JLabel("de Huella de Carbono!", SwingConstants.CENTER);
+
+        // Configurar las fuentes y tamaños de texto
+        Font font = new Font("Arial", Font.BOLD, 24);
+        labelBienvenida1.setFont(font);
+        labelBienvenida2.setFont(font);
+
+        ImageIcon iconoInformacion = resizeImageIcon(new ImageIcon("images/idea.png"), 30, 50);
+
+        JButton btnIniciar = new JButton("Iniciar");
+        btnIniciar.setPreferredSize(new Dimension(300, 50)); // Tamaño del botón
+        btnIniciar.addActionListener(e -> {
+            // Obtener los datos del usuario de la clase Inicio
+            Inicio inicio = new Inicio();
+            inicio.mostrarVentana();
+            ventanaBienvenida.dispose();
+        });
+
+        // Crear un botón para ver información
+        JButton btnInformacion = new JButton(iconoInformacion);
+        btnInformacion.addActionListener(e -> {
+            // Abrir la ventana de información
+            Informacion info = new Informacion();
+            info.mostrarVentana();
+            ventanaBienvenida.dispose(); // Cerrar la ventana de bienvenida
+        });
+
+        // Configurar el diseño del panelFondo
+        GroupLayout layout = new GroupLayout(panelFondo);
+        panelFondo.setLayout(layout);
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                .addComponent(labelBienvenida1)
+                .addComponent(labelBienvenida2)
+                .addComponent(btnIniciar)
+                .addComponent(btnInformacion) // Agregar el nuevo botón
+        );
+        layout.setVerticalGroup(layout.createSequentialGroup()
+                .addGap(100) // Espacio superior
+                .addComponent(labelBienvenida1)
+                .addComponent(labelBienvenida2)
+                .addGap(100) 
+                .addComponent(btnIniciar)
+                .addComponent(btnInformacion) // Agregar el nuevo botón
+        );
+
+        // Agregar el panel a la ventana
+        ventanaBienvenida.getContentPane().add(panelFondo, BorderLayout.CENTER);
+
+        // Centrar la ventana en la pantalla
+        ventanaBienvenida.pack();
+        ventanaBienvenida.setLocationRelativeTo(null);
+
+        ventanaBienvenida.setVisible(true);
+
+    }
+
+    private static ImageIcon resizeImageIcon(ImageIcon icon, int width, int height) {
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(newImg);
+    }
+
+}
+package Vista;
+import javax.swing.*;
+
+public class Consejos {
+    public void mostrarVentana() {
+        // Crear la ventana de consejos
+        JFrame ventanaConsejos = new JFrame("Tips para mejorar tu huella");
+        ventanaConsejos.setSize(500, 150);
+        ventanaConsejos.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+        // Crear un JLabel con los consejos
+        JLabel etiquetaConsejos = new JLabel("<html><p>Consejo 1: Utiliza transporte público o bicicleta.</p>"
+                                              + "<p>Consejo 2: Reduce el consumo de carne y productos lácteos.</p>"
+                                              + "<p>Consejo 3: Ahorra energía apagando luces y electrodomésticos cuando no los uses.</p>"
+                                              + "<p>Consejo 4: Recicla y reutiliza materiales siempre que sea posible.</p>"
+                                              + "</html>");
+        // Agregar la etiqueta a la ventana
+        ventanaConsejos.add(etiquetaConsejos);
+
+        // Centrar la ventana en la pantalla
+        ventanaConsejos.setLocationRelativeTo(null);
+
+
+        // Mostrar la ventana limpia
+        ventanaConsejos.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        Consejos consejos = new Consejos();
+        consejos.mostrarVentana();
+    }
+}
+
+package Controlador;
+import javax.swing.*;
+
+import Modelo.CalculadoraHuellaCarbono;
+
+import java.awt.*;
+
+public class Inicio {
+    private JFrame ventanaInicio;
+    private JTextField txtNombre;
+    private JTextField txtCedula;
+    private JTextField txtProcedencia;
+
+    // Constructor
+    public void mostrarVentana() {
+        // Crear la ventana de inicio
+        ventanaInicio = new JFrame("Inicio");
+        ventanaInicio.setSize(450, 450);
+        ventanaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Crear el panel principal con un diseño de cuadrícula
+        JPanel panelPrincipal = new JPanel(new GridBagLayout());
+        panelPrincipal.setBackground(new Color(240, 240, 240)); // Color de fondo
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        ImageIcon iconoSiguiente = resizeImageIcon(new ImageIcon("images/siguiente.png"), 30, 30);
+
+
+        // Etiqueta y campo de texto para el nombre
+        JLabel labelNombre = new JLabel("Nombre:");
+        txtNombre = new JTextField(20);
+        panelPrincipal.add(labelNombre, gbc);
+        gbc.gridx++;
+        panelPrincipal.add(txtNombre, gbc);
+
+        // Etiqueta y campo de texto para la cédula
+        gbc.gridx = 0;
+        gbc.gridy++;
+        JLabel labelCedula = new JLabel("Cédula:");
+        txtCedula = new JTextField(20);
+        panelPrincipal.add(labelCedula, gbc);
+        gbc.gridx++;
+        panelPrincipal.add(txtCedula, gbc);
+
+        // Etiqueta y campo de texto para el lugar de procedencia
+        gbc.gridx = 0;
+        gbc.gridy++;
+        JLabel labelProcedencia = new JLabel("Lugar de Procedencia:");
+        txtProcedencia = new JTextField(20);
+        panelPrincipal.add(labelProcedencia, gbc);
+        gbc.gridx++;
+        panelPrincipal.add(txtProcedencia, gbc);
+
+        // Espacio en blanco para separar los campos de texto de los botones
+        gbc.gridy++;
+        gbc.gridx = 0;
+        gbc.gridwidth = 2;
+        panelPrincipal.add(Box.createVerticalStrut(20), gbc);
+
+        // Botón para aceptar los datos ingresados
+        gbc.gridy++;
+        JButton btnAceptar = new JButton(iconoSiguiente);
+        btnAceptar.setPreferredSize(new Dimension(100, 30));
+        btnAceptar.addActionListener(e -> {
+            // Guardar los datos ingresados en la clase
+            String nombre = txtNombre.getText();
+            String cedula = txtCedula.getText();
+            String procedencia = txtProcedencia.getText();
+
+            // Crear una instancia de la clase CalculadoraHuellaCarbono y mostrar su ventana
+            CalculadoraHuellaCarbono calculadora = new CalculadoraHuellaCarbono(nombre, cedula, procedencia);
+            calculadora.mostrarVentana();
+
+            // Cerrar la ventana actual de Inicio
+            ventanaInicio.dispose();
+        });
+        panelPrincipal.add(btnAceptar, gbc);
+
+        // Agregar el panel principal a la ventana
+        ventanaInicio.add(panelPrincipal);
+        ventanaInicio.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+        ventanaInicio.setVisible(true); // Hacer visible la ventana
+    }
+
+    // Método para obtener el nombre ingresado
+    public String getNombre() {
+        return txtNombre.getText();
+    }
+
+    // Método para obtener la cédula ingresada
+    public String getCedula() {
+        return txtCedula.getText();
+    }
+
+    // Método para obtener el lugar de procedencia ingresado
+    public String getProcedencia() {
+        return txtProcedencia.getText();
+    }
+
+    // Método principal para ejecutar la aplicación
+    public static void main(String[] args) {
+        Inicio inicio = new Inicio();
+    }
+
+    private static ImageIcon resizeImageIcon(ImageIcon icon, int width, int height) {
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(newImg);
+    }
+}
+
+package Modelo;
+import javax.swing.*;
+
+import Vista.Bienvenida;
+import Vista.Consejos;
+
+import java.awt.*;
+
+public class CalculadoraHuellaCarbono {
+
+    private String nombre;
+    private String cedula;
+    private String procedencia;
+
+     // Constructor que recibe los datos del usuario
+     public CalculadoraHuellaCarbono(String nombre, String cedula, String procedencia) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.procedencia = procedencia;
+    }
+
+    // Método para establecer los datos del usuario
+    public void setDatosUsuario(String nombre, String cedula, String procedencia) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.procedencia = procedencia;
+    }
+
+    public void mostrarVentana() {
+        JFrame ventanaCalculadora = new JFrame("Calculadora de Huella de Carbono");
+        ventanaCalculadora.setSize(500, 400);
+        ventanaCalculadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panelPrincipal = new JPanel(new GridBagLayout());
+        panelPrincipal.setBackground(new Color(204, 255, 204));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(5, 10, 5, 10);
+
+        JPanel panelPreguntas = new JPanel();
+        panelPreguntas.setLayout(new BoxLayout(panelPreguntas, BoxLayout.Y_AXIS));
+
+        ImageIcon iconoCalculadora = resizeImageIcon(new ImageIcon("images/Calculadora.jpg"), 30, 30);
+
+
+        JLabel labelPregunta2 = new JLabel("¿Cuántas veces a la semana comes carne?");
+        JTextField txtRespuesta2 = new JTextField(3);
+        gbc.gridwidth = 2;
+        panelPrincipal.add(labelPregunta2, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        panelPrincipal.add(txtRespuesta2, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        JLabel labelPregunta3 = new JLabel("¿Cuántos kilómetros conduces tu coche por semana?");
+        JTextField txtRespuesta3 = new JTextField(3);
+        gbc.gridwidth = 2;
+        panelPrincipal.add(labelPregunta3, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        panelPrincipal.add(txtRespuesta3, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        JLabel labelPregunta4 = new JLabel("¿Cuántas veces al mes utilizas transporte público?");
+        JTextField txtRespuesta4 = new JTextField(3);
+        gbc.gridwidth = 2;
+        panelPrincipal.add(labelPregunta4, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        panelPrincipal.add(txtRespuesta4, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        JLabel labelPregunta5 = new JLabel("¿Cuántas veces compras productos empaquetados por semana?");
+        JTextField txtRespuesta5 = new JTextField(3);
+        gbc.gridwidth = 2;
+        panelPrincipal.add(labelPregunta5, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        panelPrincipal.add(txtRespuesta5, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+
+        JButton btnCalcular = new JButton(iconoCalculadora);
+        btnCalcular.setPreferredSize(new Dimension(60, 30));
+        btnCalcular.addActionListener(e -> {
+            int respuesta2 = Integer.parseInt(txtRespuesta2.getText());
+            int respuesta3 = Integer.parseInt(txtRespuesta3.getText());
+            int respuesta4 = Integer.parseInt(txtRespuesta4.getText());
+            int respuesta5 = Integer.parseInt(txtRespuesta5.getText());
+
+            double huellaCarbono = calcularHuellaCarbono(respuesta2, respuesta3, respuesta4, respuesta5);
+
+            // Construir el mensaje que incluye los datos del usuario y la huella de carbono
+            String mensaje = "Usuario:\nNombre: " + nombre + "\nCédula: " + cedula + "\nLugar de procedencia: "
+                    + procedencia
+                    + "\n\nLa huella de carbono calculada es: " + huellaCarbono + "\n\n¿Qué deseas hacer?";
+            Object[] opciones = { "Consejos", "Aceptar", "Cerrar" };
+            int seleccion = JOptionPane.showOptionDialog(null, mensaje, "Resultado",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                    null, opciones, opciones[0]);
+
+            switch (seleccion) {
+                case 0:
+                    Consejos consejos = new Consejos();
+                    consejos.mostrarVentana();
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    ventanaCalculadora.dispose();
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        JButton btnRegresar = new JButton("Regresar");
+        btnRegresar.setPreferredSize(new Dimension(30, 30));
+        btnRegresar.addActionListener(e -> {
+            Bienvenida bienvenida = new Bienvenida();
+            bienvenida.main(null);
+            ventanaCalculadora.dispose();
+        });
+
+        panelPrincipal.add(panelPreguntas);
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        gbc.weightx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        panelPrincipal.add(btnCalcular, gbc);
+
+        gbc.gridx++;
+        panelPrincipal.add(btnRegresar, gbc);
+
+        ventanaCalculadora.add(panelPrincipal);
+        ventanaCalculadora.setLocationRelativeTo(null);
+        ventanaCalculadora.setVisible(true);
+    }
+
+    private double calcularHuellaCarbono(int respuesta2, int respuesta3, int respuesta4, int respuesta5) {
+        double huellaCarbono = (respuesta2 * 0.1) + (respuesta3 * 0.05) + (respuesta4 * 0.5) + respuesta5;
+        return huellaCarbono;
+    }
+
+    public static void main(String[] args) {
+        
+    }
+
+    private static ImageIcon resizeImageIcon(ImageIcon icon, int width, int height) {
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(newImg);
+    }
+}
+
+package Modelo;
+import javax.swing.*;
+
+import Vista.Bienvenida;
+
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Informacion {
+    public void mostrarVentana() {
+        // Crear la ventana de información
+        JFrame ventanaInformacion = new JFrame("Información");
+        ventanaInformacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Panel con fondo verde suave
+        JPanel panelFondo = new JPanel(new BorderLayout());
+        panelFondo.setBackground(new Color(204, 255, 204)); // Verde suave
+
+        // Texto sobre la huella de carbono
+        String textoHuellaCarbono = "<html><body>"
+                                    + "<h1 style='font-family: Arial;'>¿Qué es la huella de carbono?</h1>"
+                                    + "<p style='font-family: Arial;'>La huella de carbono es una medida de la cantidad total de gases de efecto invernadero (GEI) emitidos a"
+                                    + " la atmósfera debido a las actividades humanas, expresada en términos de dióxido de carbono equivalente (CO2e).</p>"
+                                    + "<p style='font-family: Arial;'>Estas emisiones provienen principalmente de la quema de combustibles fósiles como el petróleo, el gas natural, "
+                                    + "y el carbón para generar energía, así como de actividades como la producción industrial, la agricultura y el transporte.</p>"
+                                    + "<h1 style='font-family: Arial;'>¿Por qué es importante reducir nuestra huella de carbono?</h1>"
+                                    + "<p style='font-family: Arial;'>Reducir nuestra huella de carbono es crucial para combatir el cambio climático y sus impactos devastadores en el medio ambiente y la sociedad.</p>"
+                                    + "<p style='font-family: Arial;'>Algunas formas de reducir nuestra huella de carbono incluyen el uso de energías renovables, la eficiencia energética, la adopción de prácticas agrícolas sostenibles, "
+                                    + "el transporte sostenible y la reducción del consumo de productos con alto contenido de carbono.</p>"
+                                    + "<h1 style='font-family: Arial;'>¿Cómo podemos reducir nuestra huella de carbono?</h1>"
+                                    + "<p style='font-family: Arial;'>Pequeñas acciones individuales, como caminar o andar en bicicleta en lugar de conducir, reducir el consumo de carne y productos lácteos, y reciclar y reutilizar materiales, "
+                                    + "pueden marcar una gran diferencia cuando se trata de reducir nuestra huella de carbono y crear un futuro más sostenible para todos.</p>"
+                                    + "</body></html>";
+
+        // Etiqueta con el texto sobre la huella de carbono
+        JLabel labelInformacion = new JLabel(textoHuellaCarbono);
+
+        // Botón de regresar
+        JButton btnRegresar = new JButton("Regresar");
+        btnRegresar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ventanaInformacion.dispose(); // Cerrar la ventana actual
+                Bienvenida bienvenida = new Bienvenida();
+                bienvenida.main(null); // Mostrar la ventana de bienvenida
+            }
+        });
+
+        // Panel para el botón de regresar
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelBoton.add(btnRegresar);
+
+        // Panel para el contenido
+        JPanel panelContenido = new JPanel(new BorderLayout());
+        panelContenido.add(labelInformacion, BorderLayout.CENTER);
+        panelContenido.add(panelBoton, BorderLayout.SOUTH);
+
+        // Agregar el contenido al panel de fondo
+        panelFondo.add(panelContenido, BorderLayout.CENTER);
+
+        // Agregar el panel de fondo a la ventana
+        ventanaInformacion.getContentPane().add(panelFondo, BorderLayout.CENTER);
+
+        // Configurar tamaño y posición de la ventana
+        ventanaInformacion.setSize(1000, 440);
+        ventanaInformacion.setLocationRelativeTo(null);
+
+        // Mostrar la ventana
+        ventanaInformacion.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        Informacion info = new Informacion();
+        info.mostrarVentana();
+    }
+}
